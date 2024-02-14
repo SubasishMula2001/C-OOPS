@@ -124,3 +124,38 @@ int main() {
    
    return 0;
 }
+// Destructor:
+// A destructor works opposite to constructor; 
+// it destructs the objects of classes.
+// It can be defined only once in a class. Like constructors, 
+// it is invoked automatically.
+// Special member function of a class that is auto
+// the main purpose of a destructor 
+// is to release resources that the objet may have acquired
+// during its lifetime
+// identified by the ~ symbol folllowed by the class name.
+
+#include <iostream>
+using namespace std;
+
+class MyClass {
+public:
+    // Constructor
+    MyClass() {
+        cout << "Constructor called." << endl;
+    }
+
+    // Destructor
+    ~MyClass() {
+        cout << "Destructor called." << endl;
+    }
+};
+
+int main() {
+    // Creating an object
+    MyClass obj;
+
+    // Destructor is automatically called when the object goes out of scope
+    return 0;
+}
+
