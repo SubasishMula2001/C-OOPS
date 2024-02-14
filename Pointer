@@ -1,0 +1,22 @@
+// Pointer : Variable that store memory address . They allow
+// you to indirectly access a variable value by pointing its 
+// memory location
+#include <iostream>
+
+using namespace std;
+
+int main() {
+   int num = 10;
+   int *ptr;
+   
+   ptr = &num; // assign the address of num to the pointer
+   
+   cout<< "value of num " << num << endl;
+    // the dereference operator * is used to access the
+    // value that is stored at the memory address
+    // pointed to by a pointer.
+   cout << "value pointed to by ptr " << *ptr << endl; 
+   cout<< "address of num " << &num << endl;
+   cout<< "value of ptr(memory address) " << ptr << endl;
+   return 0;
+}
