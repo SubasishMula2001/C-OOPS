@@ -1,0 +1,67 @@
+
+// Friend Function
+// Like a friend class, a friend function can be granted 
+// special access to private and protected members of
+// a class in C++
+// A friend function is a function that is not a member of a class but 
+// has access to its private and protected members.
+#include <iostream>
+
+using namespace std;
+
+class B;
+
+class A {
+    private:
+      int privateMemberA;
+      
+    public:
+       A(int value) : privateMemberA(value) {}
+       
+     friend void displayPrivateMemberA(A& objA);
+};
+void displayPrivateMemberA(A& objA) {
+    cout << "Private member of class A acces by frd funct"<< objA.privateMemberA<<endl;
+    
+}
+int main() {
+    A objA(5);
+    
+    displayPrivateMemberA(objA);
+    return 0;
+}
+// Fried class : Friend class can access private and
+//protected member of aother class in which it is declared
+
+// A friend class is a class that is granted access to the private 
+// and protected members of another class.
+
+#include <iostream>
+using namespace std;
+
+
+class A;
+class B {
+    private:
+       int privateMemberB;
+       
+    public:
+       B(int value):privateMemberB(value){}
+       
+    friend class A;
+};
+
+class A {
+    public:
+        void displayPrivateMemberB(B& objB) {
+            cout << "Private memeber of class B acces by friend class A " << objB.privateMemberB<<endl;
+        }
+};
+int main() {
+    B objB(10);
+    
+    A objA;
+    
+    objA.displayPrivateMemberB(objB);
+    return 0;
+}
