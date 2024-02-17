@@ -1,0 +1,57 @@
+// static : When a variable is declared as static, space for it gets allocated for
+// the lifetime of the program. Even if the function is called multiple times, space for
+// the static variable is allocated only once and the value of the variable in the previous 
+// call gets carried through the next function call.
+// we don't need to create instance for accessing the static members, so it saves memory.
+//It is used to refer the common property of all objects 
+// variables in a Function
+#include <iostream>
+#include <string>
+using namespace std;
+
+void demo()
+{
+	// static variable
+	static int count = 0;
+	cout << count << " ";
+
+	count++;
+}
+
+int main()
+{
+	for (int i = 0; i < 5; i++)
+		demo();
+	return 0;
+}
+// Static Variables inside Functions
+
+#include <iostream>
+using namespace std;
+
+void demo() {
+    static int count = 0;  // Static variable
+    cout << "Call #" << ++count << endl;
+}
+
+int main() {
+    demo();  // Outputs: Call #1
+    demo();  // Outputs: Call #2
+    demo();  // Outputs: Call #3
+    return 0;
+}
+// Static Member Functions
+#include <iostream>
+using namespace std;
+
+class MyClass {
+public:
+    static void staticFunction() {
+        cout << "Static Function" << endl;
+    }
+};
+
+int main() {
+    MyClass::staticFunction();  // Outputs: Static Function
+    return 0;
+}
