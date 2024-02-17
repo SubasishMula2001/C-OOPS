@@ -1,0 +1,42 @@
+A.Class Vs 2.Struct
+
+1.In class all members are private by default that means
+data members are only accesiable within the class and 
+friend function.
+1. An instance of a class is called an ‘object’.	
+1.It is declared using class keyword.
+
+2.In structure members are public by default . that means
+data members and members function accesilbe outside the class.
+2. An instance of structure is called the ‘structure variable’.
+2.it is declared using struct keyword.
+
+B.Constructor : It is special method which is autometcly invoke at the time
+obj creation.
+
+   1.Default: with no parameter
+   2.Paramerized: It allows to initilize obj data member
+   with specified value during obj creation.
+   3.Copy Constructor: it is a constuctor that initilize an objects 
+   by coping the values of other objects of the same class.
+  Destructor is to release resources that the objet may have acquired
+during its lifetime
+C.Pointer : Variable that store memory address and they allow you
+to indirectly acces the values by pointing its memory location.
+  Reference : Reference is a variable which is another name of existing variable.
+  
+D.Friend Class and friend functon :
+Friend Class : it grant special acess to the private and protected 
+member of a class.
+
+Friend Func:Can acces private and protecred member of another class
+in which it is declared.
+
+E.Virtual Funcation :It is a member func of base class that
+can be overritten in derived class.
+Pure Virtual Function: It is a virtual function declard in a bases
+class without definition.
+  The derived class must provide implmentation for this class.
+F.dynamic casting.
+Dynamic casting is a feature in C++ that allows you
+ to perform type conversions of pointers or references to objects during runtime
