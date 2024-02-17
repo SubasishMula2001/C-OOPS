@@ -1,0 +1,53 @@
+// Abstraction : it is a process of hiding implementation deatils and showing onley
+// neccsarry inromation to the user
+1. Data abstraction: This type of abstraction is more concerned with 
+showing the required information regarding the data and hides any
+irrelevant information from the user’s perspective.
+
+2. Control abstraction: This type of abstraction portrays only relevant 
+information regarding the implementation and hides any irrelevant information.
+// C++ Program to Demonstrate the
+// working of Abstraction
+#include <iostream>
+using namespace std;
+
+// Defining a class
+class Abstraction {
+    
+// Defining private members
+private:
+	int data1, data2;
+
+// Defining public memeber
+public:
+    
+    // Setter function to set the values of
+    // data1 and data2
+	void setter(int data1, int data2)
+	{
+		this -> data1 = data1;
+		this -> data2 = data2;
+	}
+    
+    // Method to display 
+    // Data members
+	void display()
+	{
+		cout << "data1 = " << data1 << '\n';
+		cout << "data2 = " << data2 << '\n';
+	}
+};
+
+int main()
+{
+    
+    // Creating an object of Abstraction class
+	Abstraction object;
+	
+	// Calling setter method
+	object.setter(100, 200);
+	
+	// Callling display method
+	object.display();
+	return 0;
+}
