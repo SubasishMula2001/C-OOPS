@@ -1,6 +1,10 @@
 // Pointer : Variable that store memory address . They allow
 // you to indirectly access a variable value by pointing its 
 // memory location
+
+// A reference is a variable which is another name of the existing variable, 
+// while the pointer is variable that stores the address of another variable.
+
 #include <iostream>
 
 using namespace std;
