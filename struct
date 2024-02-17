@@ -1,0 +1,30 @@
+// Struct: User defined data type that allows you to group
+// related data member under a single name;
+//Structs provide a simple and straightforward way to 
+// organize related data in C++
+#include <iostream>
+using namespace std;
+
+// Definition of a struct
+struct Person {
+    string name;
+    int age;
+    double height;
+};
+
+int main() {
+    // Creating an object of struct Person
+    Person person1;
+
+    // Assigning values to the data members
+    person1.name = "Alice";
+    person1.age = 25;
+    person1.height = 5.7;
+
+    // Accessing and printing the data members
+    cout << "Name: " << person1.name << endl;
+    cout << "Age: " << person1.age << endl;
+    cout << "Height: " << person1.height << " feet" << endl;
+
+    return 0;
+}
