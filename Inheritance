@@ -1,0 +1,168 @@
+// Default visibility mode of inheritance is private
+// Public : PUblic members of base class became public member in derived class.
+// Private : Public members of base calls became private in  derived class.
+// private member cannot inheritaed from base class to derived class.
+// visibility
+                /*public derived              private derived        protected derived
+private             Not inherited               Not inherited       Not inherited
+protected           protected                   private             protected
+public              public                      private             protected
+*/
+#include <iostream>
+using namespace std;
+
+// I. Single Inheritance
+class Animal {
+public:
+    void eat() {
+        cout << "Animal is eating" << endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    void bark() {
+        cout << "Dog is barking" << endl;
+    }
+};
+
+// II. Multilevel Inheritance
+class Grandparent {
+public:
+    void grandparentMethod() {
+        cout << "Grandparent's method" << endl;
+    }
+};
+
+class Parent : public Grandparent {
+public:
+    void parentMethod() {
+        cout << "Parent's method" << endl;
+    }
+};
+
+class Child : public Parent {
+public:
+    void childMethod() {
+        cout << "Child's method" << endl;
+    }
+};
+
+// III. Hierarchical Inheritance
+class Vehicle {
+public:
+    void start() {
+        cout << "Vehicle is starting" << endl;
+    }
+};
+
+class Car : public Vehicle {
+public:
+    void drive() {
+        cout << "Car is driving" << endl;
+    }
+};
+
+class Bicycle : public Vehicle {
+public:
+    void pedal() {
+        cout << "Bicycle is pedaling" << endl;
+    }
+};
+
+// IV. Multiple Inheritance (through Interfaces)
+class Swimmer {
+public:
+    virtual void swim() = 0; // pure virtual function
+};
+
+class Flyer {
+public:
+    virtual void fly() = 0; // pure virtual function
+};
+
+class Bird : public Swimmer, public Flyer {
+public:
+    void swim() override {
+        cout << "Bird is swimming" << endl;
+    }
+
+    void fly() override {
+        cout << "Bird is flying" << endl;
+    }
+};
+
+// V. Hybrid Inheritance (using inheritance and interfaces)
+class A {
+public:
+    void methodA() {
+        cout << "Class A method" << endl;
+    }
+};
+
+class B : public A {
+public:
+    void methodB() {
+        cout << "Class B method" << endl;
+    }
+};
+
+class C : public B {
+public:
+    void methodC() {
+        cout << "Class C method" << endl;
+    }
+};
+
+class X {
+public:
+    virtual void methodX() = 0; // pure virtual function
+};
+
+class D : public C, public X {
+public:
+    void methodD() {
+        cout << "Class D method" << endl;
+    }
+
+    void methodX() override {
+        cout << "Interface X method" << endl;
+    }
+};
+
+int main() {
+    // Single Inheritance
+    Dog objDog;
+    objDog.bark();
+    objDog.eat();
+
+    // Multilevel Inheritance
+    Child objChild;
+    objChild.grandparentMethod();
+    objChild.parentMethod();
+    objChild.childMethod();
+
+    // Hierarchical Inheritance
+    Car objCar;
+    objCar.start();
+    objCar.drive();
+
+    Bicycle objBicycle;
+    objBicycle.start();
+    objBicycle.pedal();
+
+    // Multiple Inheritance
+    Bird objBird;
+    objBird.swim();
+    objBird.fly();
+
+    // Hybrid Inheritance
+    D objD;
+    objD.methodA();
+    objD.methodB();
+    objD.methodC();
+    objD.methodD();
+    objD.methodX();
+
+    return 0;
+}
