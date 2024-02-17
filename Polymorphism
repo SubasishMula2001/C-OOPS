@@ -1,0 +1,184 @@
+// Polymorphism : it means many form and it is the ability of an object to take 
+// many forms or to have mulitple behavior.
+// 1.compile time 
+//     1.function overloading:when two or more method in a class hava
+// same name but diffrent parameter 
+//     2.operator overloading : When an operator is updated to be used
+//for user-defined data type
+
+// 2.run time
+// Dynamic binding : refers to the mechanism by which the method to be executed is
+//determined at runtime based on the actual type of the object.
+
+// Function overriding refers to the ability of a derived class to provide a specific 
+// implementation of a method that is already provided by its parent class. This allows
+// for polymorphic behavior and is a key aspect of dynamic binding.
+
+//     1.virtual function:
+//A virtual function is a member function of a
+//base class that can be overridden in a derived class.
+
+// pure virtual function : 
+//  is a virtual function declared in the base class without definition
+//  the derived class must provide an  implementation 
+ //for this function. Otherwise, we'll get a compilation error.
+ 
+
+// example of functon overloading
+#include <iostream>
+
+using namespace std;
+class Calculator {
+    public:
+        int add(int a, int b) {
+            return a+b;
+        }
+        double add(double a,double b) {
+            return a+b; 
+        }
+};
+
+int main() {
+    Calculator c;
+   cout<< c.add(3,4)<<endl;
+   cout<< c.add(4.4,5.5)<<endl;
+}
+
+// Operator overloading
+   #include <iostream>
+
+using namespace std;
+
+class Count {
+    int x;
+    public:
+        Count(int X = 0) {
+            this->x = X;
+        }
+    Count operator++() {
+        Count c;
+        c.x = ++x;
+        return c;
+    }
+    void print() {
+        cout<< x << endl;
+    }
+};
+int main() {
+   Count c1(42);
+   cout << "Before using ++ operator ";
+   c1.print();
+   
+   Count c2 = ++c1;
+   cout << "After using ++ operato r";
+   c2.print();
+   
+}
+// virtual and pure virtual function 
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+    virtual void virtualFunction() {
+        cout << "Base virtual function\n";
+    }
+    
+    virtual void pureVirtualFunction() = 0;
+};
+
+class Derived1 : public Base {
+public:
+    void virtualFunction()  {
+      cout << "Derived1 virtual function\n";
+    }
+    void pureVirtualFunction()  {
+        cout << "Derived1 pure virtual function\n";
+    }
+};
+
+class Derived2 : public Base {
+public:
+    void virtualFunction()  {
+        cout << "Derived2 virtual function\n";
+    }
+    
+    // Does not provide an implementation for the pure virtual function
+    // This class will also become abstract if not overridden
+};
+
+int main() {
+  
+    Base* basePtr1 = new Derived1();
+    basePtr1->virtualFunction();       // Output: Derived1 virtual function
+    basePtr1->pureVirtualFunction();   // Output: Derived1 pure virtual function
+
+    Base* basePtr2 = new Derived2();
+    basePtr2->virtualFunction();       // Output: Derived2 virtual function
+    //basePtr2->pureVirtualFunction(); // Error: pure virtual function call
+
+    delete basePtr1;
+    delete basePtr2;
+
+    return 0;
+}
+// Dynamic binding :
+#include <iostream>
+using namespace std;
+
+class Loan {
+public:
+    virtual void balance() {
+        cout << "Loan balance" << endl;
+    }
+};
+
+class SBI : public Loan {
+public:
+    void balance() override {
+        cout << "SBI Loan balance" << endl;
+    }
+};
+
+int main() {
+    Loan* loanPtr;
+
+    // Object of derived class SBI
+    SBI sbiLoan;
+
+    // Pointing to the object of derived class
+    loanPtr = &sbiLoan;
+
+    // Method call - resolved at runtime based on the actual object type
+    loanPtr->balance();
+
+    return 0;
+}
+// function overidding
+#include <iostream>
+using namespace std;
+
+class Loan {
+public:
+    void balance() {
+        cout << "Loan balance" << endl;
+    }
+};
+
+class SBI : public Loan {
+public:
+    void balance() {
+        cout << "SBI Loan balance" << endl;
+    }
+};
+
+int main() {
+    // Object of derived class SBI
+    SBI sbiLoan;
+
+    // Method call - resolved at compile-time based on the declared type
+    sbiLoan.balance();
+
+    return 0;
+}
+
